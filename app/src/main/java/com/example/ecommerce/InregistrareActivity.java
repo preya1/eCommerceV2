@@ -1,14 +1,26 @@
 package com.example.ecommerce;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class InregistrareActivity extends AppCompatActivity {
 
@@ -69,8 +81,58 @@ public class InregistrareActivity extends AppCompatActivity {
 
     }
 
-    private void ValidareTelefon(String nume, String telefon, String parola)
+    private void ValidareTelefon(final String nume, final String telefon, final String parola)
     {
 
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if(!(dataSnapshot.child("Utilizatori").child(telefon).exists()))
+                {
+
+                    HashMap<String,Object> dateUtilizatorMap = new HashMap<>();
+                    dateUtilizatorMap.put("telefon",telefon);
+                    dateUtilizatorMap.put("nume",nume);
+                    dateUtilizatorMap.put("parola",parola);
+
+                    RootRef.child("Utilizatori").child(telefon).updateChildren(dateUtilizatorMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+                               if(task.isSuccessful())
+                               {
+                                   Toast.makeText(InregistrareActivity.this,"Felicitari ! Cont creat cu succes!",Toast.LENGTH_LONG).show();
+                                   baraIncarcare.dismiss();
+
+                                   Intent intent = new Intent(InregistrareActivity.this,LogareActivity.class);
+                                   startActivity(intent);
+                               }
+                               else
+                               {
+                                   baraIncarcare.dismiss();
+                                   Toast.makeText(InregistrareActivity.this,"O problema de retea ! Va rugam reincercati !",Toast.LENGTH_LONG).show();
+                               }
+                        }
+                    });
+
+                }
+                else
+                {
+                    Toast.makeText(InregistrareActivity.this,"Ne pare rau" + telefon + " acest numar de telefon este inregistrat!",Toast.LENGTH_LONG).show();
+                    baraIncarcare.dismiss();
+                    Toast.makeText(InregistrareActivity.this,"Te rog incearca un alt numar de telefon",Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }
