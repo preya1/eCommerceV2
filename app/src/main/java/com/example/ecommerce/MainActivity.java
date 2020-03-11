@@ -27,5 +27,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        alaturareButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,InregistrareActivity.class);
+                startActivity(intent);
+            }
+        });
+        {
+
+        }
     }
 }
