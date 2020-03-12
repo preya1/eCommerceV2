@@ -1,184 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="12"
     android:background="@drawable/category_background"
     tools:context=".AdminCategorieActivity">
+
+    <TextView
+        android:id="@+id/slogan_categorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="Adauga Produs Nou"
+        android:textAlignment="center"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_orange_dark"
+        
+        />
     
-
-
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linear1_categorie"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2">
-
-        <TextView
-            android:id="@+id/categorie_grid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adauga Categorie"
-            android:textSize="36sp"
-            android:layout_centerInParent="true"
-            android:textColor="@android:color/holo_orange_dark"/>
-
-    </RelativeLayout>
-
-    <GridLayout
-        android:columnCount="3"
-        android:rowCount="3"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:padding="14dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/slogan_categorie"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="45dp"
         >
 
-        <!--Rand 1 -->
+        <ImageView
+            android:id="@+id/laptopuri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/laptops"
+            />
 
-        <!--Coloana 1 -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp"
-            >
-            
-            <LinearLayout
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/laptops"
-                    android:layout_gravity="center_horizontal"/>
-                
-                <TextView
-                    android:text="Laptop"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/telefoane"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/mobiles"
+            />
+        <ImageView
+            android:id="@+id/ceasuri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/watches"
+            />
+        <ImageView
+            android:id="@+id/casti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/headphoness"
+            />
 
-                </TextView>
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linear2_categorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linear1_categorie"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="45dp"
+        >
 
-            </LinearLayout>
+        <ImageView
+            android:id="@+id/pulover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sweather"
+            />
 
+        <ImageView
+            android:id="@+id/tricouri_sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sports"
+            />
+        <ImageView
+            android:id="@+id/bluze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tshirts"
+            />
+        <ImageView
+            android:id="@+id/rochii"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/female_dresses"
+            />
 
-
-        </androidx.cardview.widget.CardView>
-
-
-        <!--Coloana 2 -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp"
-            >
-
-            <LinearLayout
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/mobiles"
-                    android:layout_gravity="center_horizontal"/>
-
-                <TextView
-                    android:text="Telefoane"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </TextView>
+    </LinearLayout>
 
 
-            </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear3_categorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linear2_categorie"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="45dp"
+        >
+
+        <ImageView
+            android:id="@+id/adidasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shoess"
+            />
+
+        <ImageView
+            android:id="@+id/ochelari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/glasses"
+            />
+        <ImageView
+            android:id="@+id/palari"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/hats"
+            />
+        <ImageView
+            android:id="@+id/genti"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/purses_bags"
+            />
 
 
-
-        </androidx.cardview.widget.CardView>
-
-
-        <!--Coloana 3 -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp"
-            >
-
-            <LinearLayout
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_margin="16dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/watches"
-                    android:layout_gravity="center_horizontal"/>
-
-                <TextView
-                    android:text="Ceasuri"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="17sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    
-                </TextView>
+    </LinearLayout>
 
 
-            </LinearLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
-
-
-
-
-
-    </GridLayout>
-
-</LinearLayout>
+</RelativeLayout>
