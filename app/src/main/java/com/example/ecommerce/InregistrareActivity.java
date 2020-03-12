@@ -122,7 +122,7 @@ public class InregistrareActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(InregistrareActivity.this,"Ne pare rau" + telefon + " acest numar de telefon este inregistrat!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(InregistrareActivity.this,"Ne pare rau numarul de telefon este deja inregistrat!",Toast.LENGTH_LONG).show();
                     baraIncarcare.dismiss();
                     Toast.makeText(InregistrareActivity.this,"Te rog incearca un alt numar de telefon",Toast.LENGTH_LONG).show();
                 }
