@@ -30,7 +30,7 @@ public class LogareActivity extends AppCompatActivity {
     private TextView AdminLink,UtilizatorLink;
     private ProgressDialog baraIncarcare;
 
-    private String parentDbUtilizatori = "Utilizatori";
+    private String parentDbDenumire = "Utilizatori";
     private CheckBox chkAminteste;
     private SharedPreferences loginPreferences;
     private SharedPreferences.Editor loginPrefsEditor;
@@ -94,7 +94,7 @@ public class LogareActivity extends AppCompatActivity {
                 logareBtn.setText("Logare Admin");
                 AdminLink.setVisibility(View.INVISIBLE);
                 UtilizatorLink.setVisibility(View.VISIBLE);
-                parentDbUtilizatori = "Administratori";
+                parentDbDenumire = "Administratori";
             }
         });
 
@@ -108,7 +108,7 @@ public class LogareActivity extends AppCompatActivity {
                 logareBtn.setText("Logare");
                 AdminLink.setVisibility(View.VISIBLE);
                 UtilizatorLink.setVisibility(View.INVISIBLE);
-                parentDbUtilizatori = "Utilizatori";
+                parentDbDenumire = "Utilizatori";
 
             }
         });
@@ -153,10 +153,10 @@ public class LogareActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                if(dataSnapshot.child(parentDbUtilizatori).child(telefon).exists())
+                if(dataSnapshot.child(parentDbDenumire).child(telefon).exists())
                 {
 
-                    Utilizatori dateUtilizator = dataSnapshot.child(parentDbUtilizatori).child(telefon).getValue(Utilizatori.class);
+                    Utilizatori dateUtilizator = dataSnapshot.child(parentDbDenumire).child(telefon).getValue(Utilizatori.class);
 
                     if(dateUtilizator.getTelefon().equals(telefon))
                     {
@@ -165,7 +165,7 @@ public class LogareActivity extends AppCompatActivity {
                         {
                            //Conexiune Administrator
 
-                            if(parentDbUtilizatori.equals("Administratori"))
+                            if(parentDbDenumire.equals("Administratori"))
                             {
                                 Toast.makeText(LogareActivity.this,"Te-ai logat ca Administrator cu success!",Toast.LENGTH_LONG).show();
                                 baraIncarcare.dismiss();
@@ -173,7 +173,7 @@ public class LogareActivity extends AppCompatActivity {
                                 Intent intent = new Intent(LogareActivity.this,AdminAdaugaProdusActivity.class);
                                 startActivity(intent);
                             }
-                            else if(parentDbUtilizatori.equals("Utilizatori"))
+                            else if(parentDbDenumire.equals("Utilizatori"))
                             {
                                 Toast.makeText(LogareActivity.this,"Te-ai logat cu success!",Toast.LENGTH_LONG).show();
                                 baraIncarcare.dismiss();
