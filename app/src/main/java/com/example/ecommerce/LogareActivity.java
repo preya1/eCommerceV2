@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecommerce.Model.Utilizatori;
@@ -26,6 +27,7 @@ public class LogareActivity extends AppCompatActivity {
 
     private EditText IntroducereTelefon,IntroducereParola;
     private Button logareBtn;
+    private TextView AdminLink,UtilizatorLink;
     private ProgressDialog baraIncarcare;
 
     private String parentDbUtilizatori = "Utilizatori";
@@ -42,6 +44,8 @@ public class LogareActivity extends AppCompatActivity {
         logareBtn = (Button)findViewById(R.id.logare);
         IntroducereTelefon = (EditText) findViewById(R.id.logare_telefon);
         IntroducereParola = (EditText) findViewById(R.id.logare_parola);
+        AdminLink = (TextView) findViewById(R.id.admin_panel);
+        UtilizatorLink = (TextView)findViewById(R.id.utlizator_panel);
         chkAminteste = (CheckBox) findViewById(R.id.amintire_checkbox);
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
@@ -81,6 +85,34 @@ public class LogareActivity extends AppCompatActivity {
         //Verificam daca utilizatorul a marcat casuta Aminteste-ma
 
         });
+
+        //Click Listener pe Admin Link
+
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logareBtn.setText("Logare Admin");
+                AdminLink.setVisibility(View.INVISIBLE);
+                UtilizatorLink.setVisibility(View.VISIBLE);
+                parentDbUtilizatori = "Administratori";
+            }
+        });
+
+        //Daca Utilizatorul intra din greseala pe link-ul de admin
+        // Va fi redirectionat catre pagina utilizator
+
+        UtilizatorLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                logareBtn.setText("Logare");
+                AdminLink.setVisibility(View.VISIBLE);
+                UtilizatorLink.setVisibility(View.INVISIBLE);
+                parentDbUtilizatori = "Utilizatori";
+
+            }
+        });
+
 }
 
 
@@ -131,13 +163,24 @@ public class LogareActivity extends AppCompatActivity {
 
                         if(dateUtilizator.getParola().equals(parola))
                         {
+                           //Conexiune Administrator
 
-                            Toast.makeText(LogareActivity.this,"Te-ai logat cu success!",Toast.LENGTH_LONG).show();
-                            baraIncarcare.dismiss();
+                            if(parentDbUtilizatori.equals("Administratori"))
+                            {
+                                Toast.makeText(LogareActivity.this,"Te-ai logat ca Administrator cu success!",Toast.LENGTH_LONG).show();
+                                baraIncarcare.dismiss();
 
-                            Intent intent = new Intent(LogareActivity.this,PaginaPrincipalaActivity.class);
-                            startActivity(intent);
+                                Intent intent = new Intent(LogareActivity.this,AdminAdaugaProdusActivity.class);
+                                startActivity(intent);
+                            }
+                            else if(parentDbUtilizatori.equals("Utilizatori"))
+                            {
+                                Toast.makeText(LogareActivity.this,"Te-ai logat cu success!",Toast.LENGTH_LONG).show();
+                                baraIncarcare.dismiss();
 
+                                Intent intent = new Intent(LogareActivity.this,PaginaPrincipalaActivity.class);
+                                startActivity(intent);
+                            }
                         }
                         else
                         {
