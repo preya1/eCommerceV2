@@ -100,12 +100,17 @@ public class LogareActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         }
+                        else
+                        {
+                            Toast.makeText(LogareActivity.this,"Parola gresita!",Toast.LENGTH_LONG).show();
+                            baraIncarcare.dismiss();
+                        }
                     }
 
                 }
                 else
                 {
-                    Toast.makeText(LogareActivity.this,"Contul cu numarul de telefon "  + telefon + "nu exista!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(LogareActivity.this,"Contul cu numarul de telefon "  + telefon + " nu exista!",Toast.LENGTH_LONG).show();
                     baraIncarcare.dismiss();
                 }
             }
