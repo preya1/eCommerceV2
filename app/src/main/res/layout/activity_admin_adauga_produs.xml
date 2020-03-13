@@ -4,6 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/category_background"
     tools:context=".AdminAdaugaProdusActivity">
+
+    <ImageView
+        android:id="@+id/selectare_imagine_produs"
+        android:layout_width="330dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:cropToPadding="false"
+        android:src="@drawable/select_product_image" />
+
+    <EditText
+        android:id="@+id/nume_produs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectare_imagine_produs"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:hint="Nume Produs"
+        android:textColorHint="@android:color/white"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:background="@drawable/introducere_text_design"
+        />
+
+    <EditText
+        android:id="@+id/descriere_produs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nume_produs"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:hint="Descriere Produs"
+        android:textColorHint="@android:color/white"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:background="@drawable/introducere_text_design"
+        />
+
+    <EditText
+        android:id="@+id/pret_produs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descriere_produs"
+        android:inputType="textMultiLine"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:hint="Pretul Produsului"
+        android:textColorHint="@android:color/white"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:background="@drawable/introducere_text_design"
+        />
+    
+    <Button
+        android:id="@+id/buton_adaugare_produs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pret_produs"
+        android:layout_marginTop="15dp"
+        android:padding="25dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginRight="29dp"
+        android:text="Adauga Produs"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_orange_dark"
+        android:background="@drawable/butoane"/>
+
+
+
 
 </RelativeLayout>

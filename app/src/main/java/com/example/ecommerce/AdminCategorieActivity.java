@@ -40,7 +40,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
                 //Trebuie sa selectam categoria specifica in noua fereastra pentru a adauga un produs sub categoria respectiva
-                intent.putExtra("categorii","laptops");
+                intent.putExtra("categorii","Laptops");
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","telefoane");
+                intent.putExtra("categorii","Telefoane");
                 startActivity(intent);
             }
         });
@@ -60,7 +60,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","ceasuri");
+                intent.putExtra("categorii","Ceasuri");
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","casti");
+                intent.putExtra("categorii","Casti");
                 startActivity(intent);
             }
         });
@@ -80,7 +80,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","pulover");
+                intent.putExtra("categorii","Pulovere");
                 startActivity(intent);
             }
         }));
@@ -90,7 +90,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","sports");
+                intent.putExtra("categorii","Sports");
                 startActivity(intent);
             }
         });
@@ -100,7 +100,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","tricouri");
+                intent.putExtra("categorii","Tricouri");
                 startActivity(intent);
             }
         });
@@ -110,7 +110,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","haine_femei");
+                intent.putExtra("categorii","Haine Femei");
                 startActivity(intent);
             }
         });
@@ -120,7 +120,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-               intent.putExtra("categorii","pantofi");
+               intent.putExtra("categorii","Pantofi");
                startActivity(intent);
             }
         });
@@ -130,7 +130,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-               intent.putExtra("categorii","ochelari");
+               intent.putExtra("categorii","Ochelari");
                startActivity(intent);
             }
         });
@@ -140,7 +140,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-               intent.putExtra("categorii","gradinarit");
+               intent.putExtra("categorii","Gradinarit");
                startActivity(intent);
             }
         });
@@ -150,7 +150,7 @@ public class AdminCategorieActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent intent = new Intent(AdminCategorieActivity.this,AdminAdaugaProdusActivity.class);
-                intent.putExtra("categorii","genti");
+                intent.putExtra("categorii","Genti");
             }
         });
 
