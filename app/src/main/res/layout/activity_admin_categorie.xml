@@ -14,7 +14,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="Adauga Produs Nou"
+        android:text="Cateogrii"
         android:textAlignment="center"
         android:textSize="29sp"
         android:textStyle="bold"
@@ -44,19 +44,19 @@
             android:id="@+id/telefoane"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/mobiles"
+            android:src="@drawable/telefoane"
             />
         <ImageView
             android:id="@+id/ceasuri"
             android:layout_width="97dp"
             android:layout_height="100dp"
-            android:src="@drawable/watches"
+            android:src="@drawable/ceasuri"
             />
         <ImageView
             android:id="@+id/casti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/headphoness"
+            android:src="@drawable/casti"
             />
 
     </LinearLayout>
@@ -76,7 +76,7 @@
             android:id="@+id/pulover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/sweather"
+            android:src="@drawable/pulover"
             />
 
         <ImageView
@@ -89,13 +89,13 @@
             android:id="@+id/bluze"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/tshirts"
+            android:src="@drawable/tricouri"
             />
         <ImageView
             android:id="@+id/rochii"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/female_dresses"
+            android:src="@drawable/haine_femei"
             />
 
     </LinearLayout>
@@ -116,26 +116,26 @@
             android:id="@+id/adidasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/shoess"
+            android:src="@drawable/pantofi"
             />
 
         <ImageView
             android:id="@+id/ochelari"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/glasses"
+            android:src="@drawable/ochelari"
             />
         <ImageView
             android:id="@+id/gradinarit"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/gardening"
+            android:src="@drawable/gradinarit"
             />
         <ImageView
             android:id="@+id/genti"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/purses_bags"
+            android:src="@drawable/genti"
             />
 
 
