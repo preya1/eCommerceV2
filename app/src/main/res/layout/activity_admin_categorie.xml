@@ -113,7 +113,7 @@
         >
 
         <ImageView
-            android:id="@+id/adidasi"
+            android:id="@+id/pantofi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/pantofi"

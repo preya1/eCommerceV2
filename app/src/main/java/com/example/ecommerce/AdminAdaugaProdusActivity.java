@@ -7,11 +7,15 @@ import android.widget.Toast;
 
 public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
+    private String NumeCategorie;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_adauga_produs);
 
-        Toast.makeText(this, "Bine Ai Venit ! Admin !", Toast.LENGTH_SHORT).show();
+        NumeCategorie = getIntent().getExtras().get("categorii").toString();
+
+        Toast.makeText(this,"NumeCategorie",Toast.LENGTH_LONG).show();
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,6 +18,21 @@ public class AdminCategorieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_categorie);
+
+        laptops = (ImageView)findViewById(R.id.laptopuri);
+        telefoane =(ImageView)findViewById(R.id.telefoane);
+        ceasuri = (ImageView)findViewById(R.id.ceasuri);
+        casti = (ImageView)findViewById(R.id.casti);
+
+        pulover = (ImageView)findViewById(R.id.pulover);
+        sports = (ImageView)findViewById(R.id.tricouri_sport);
+        tricouri = (ImageView)findViewById(R.id.tricouri);
+        haine_femei = (ImageView)findViewById(R.id.haine_femei);
+
+        pantofi = (ImageView)findViewById(R.id.pantofi);
+        ochelari = (ImageView)findViewById(R.id.ochelari);
+        gradinarit = (ImageView)findViewById(R.id.gradinarit);
+        genti = (ImageView)findViewById(R.id.genti);
 
         laptops.setOnClickListener(new View.OnClickListener() {
             @Override

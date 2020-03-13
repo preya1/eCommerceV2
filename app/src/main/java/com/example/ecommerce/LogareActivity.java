@@ -170,7 +170,7 @@ public class LogareActivity extends AppCompatActivity {
                                 Toast.makeText(LogareActivity.this,"Te-ai logat ca Administrator cu success!",Toast.LENGTH_LONG).show();
                                 baraIncarcare.dismiss();
 
-                                Intent intent = new Intent(LogareActivity.this,AdminAdaugaProdusActivity.class);
+                                Intent intent = new Intent(LogareActivity.this,AdminCategorieActivity.class);
                                 startActivity(intent);
                             }
                             else if(parentDbDenumire.equals("Utilizatori"))
