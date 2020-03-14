@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -28,6 +29,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -41,6 +43,8 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
     private Uri ImagineUri;
     private String randomProdusKey,descarcaImagineUrl;
     private StorageReference imaginiProdusRef;
+    private DatabaseReference ProdusRef;
+    private ProgressDialog baraIncarcare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
         introducereNumeProdus = (EditText)findViewById(R.id.nume_produs);
         introducereDescriereProdus = (EditText)findViewById(R.id.descriere_produs);
         introducerePretProdus = (EditText)findViewById(R.id.pret_produs);
+        baraIncarcare = new ProgressDialog(AdminAdaugaProdusActivity.this);
 
         imagineProdus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +79,8 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
         //Cream un folder de stochare imagini in Firebase
         imaginiProdusRef = FirebaseStorage.getInstance().getReference().child("Imagini Produs");
+
+        ProdusRef = FirebaseDatabase.getInstance().getReference().child("Produse");
 
 
     }
@@ -135,6 +142,11 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
     private void stocheazaInformatiiProdus()
     {
+        baraIncarcare.setTitle("Adaugare Produs Nou");
+        baraIncarcare.setMessage("Va rog asteptati cat timp adaugam produsul nou");
+        baraIncarcare.setCanceledOnTouchOutside(false);
+        baraIncarcare.show();
+
         Calendar calendar = Calendar.getInstance();
 
         SimpleDateFormat dataCurenta = new SimpleDateFormat("MMM dd, yyyy");
@@ -147,7 +159,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
         randomProdusKey = salveazaDataCurenta + salveazaOraCurenta;
 
-        //Stocheaza Imagine Produs in Firebase
+        //Stocheaza Imagine Produs in Firebase Storage
 
         final StorageReference caleFisier = imaginiProdusRef.child(ImagineUri.getLastPathSegment() + randomProdusKey);
 
@@ -161,6 +173,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
             {
                 String mesaj = e.toString();
                 Toast.makeText(AdminAdaugaProdusActivity.this,"Eroare : " + mesaj,Toast.LENGTH_LONG).show();
+                baraIncarcare.dismiss();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -177,6 +190,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
                         if(!task.isSuccessful())
                         {
                             throw task.getException();
+
                         }
 
                            descarcaImagineUrl = caleFisier.getDownloadUrl().toString();
@@ -200,7 +214,35 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
     private void salvareProdusInfoBD()
     {
-        
+          HashMap<String, Object>produsMap = new HashMap<>();
+          produsMap.put("produsid",randomProdusKey);
+          produsMap.put("data",salveazaDataCurenta);
+          produsMap.put("ora",salveazaOraCurenta);
+          produsMap.put("imagine",descarcaImagineUrl);
+          produsMap.put("descriere",Descriere);
+          produsMap.put("pret",Pret);
+          produsMap.put("produsnume",numeProdus);
+          produsMap.put("categorii",NumeCategorie);
+
+          ProdusRef.child(randomProdusKey).updateChildren(produsMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+              @Override
+              public void onComplete(@NonNull Task<Void> task)
+              {
+                  if(task.isSuccessful())
+                  {
+                      baraIncarcare.dismiss();
+                      Toast.makeText(AdminAdaugaProdusActivity.this,"Produsul a fost adaugat cu succes",Toast.LENGTH_LONG).show();
+                  }
+                  else
+                  {
+                      baraIncarcare.dismiss();
+                      Intent intent = new Intent(AdminAdaugaProdusActivity.this,AdminCategorieActivity.class);
+                      startActivity(intent);
+                      String mesaj = task.getException().toString();
+                      Toast.makeText(AdminAdaugaProdusActivity.this,"Eroare " +mesaj,Toast.LENGTH_LONG).show();
+                  }
+              }
+          });
     }
 }
 
