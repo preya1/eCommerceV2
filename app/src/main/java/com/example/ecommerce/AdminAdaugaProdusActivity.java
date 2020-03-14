@@ -15,6 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -28,6 +32,8 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
     private EditText introducereNumeProdus,introducereDescriereProdus,introducerePretProdus;
     private static final int GaleriePic = 1;
     private Uri ImagineUri;
+    private String randomProdusKey;
+    private StorageReference imaginiProdusRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +65,8 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
         NumeCategorie = getIntent().getExtras().get("categorii").toString();
 
+        //Cream un folder de stochare imagini in Firebase
+        imaginiProdusRef = FirebaseStorage.getInstance().getReference().child("Imagini Produs");
 
 
     }
@@ -110,7 +118,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
         }
         else
         {
-            salveazaInformatiiProdus();
+            stocheazaInformatiiProdus();
         }
         
 
@@ -118,15 +126,23 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
    //Stocheaza informatii despre produs
 
-    private void salveazaInformatiiProdus()
+    private void stocheazaInformatiiProdus()
     {
         Calendar calendar = Calendar.getInstance();
-        
+
         SimpleDateFormat dataCurenta = new SimpleDateFormat("MMM dd, yyyy");
         salveazaDataCurenta = dataCurenta.format(calendar.getTime());
 
         SimpleDateFormat dataTimp = new SimpleDateFormat("HH:mm:ss a");
         salveazaOraCurenta = dataTimp.format(calendar.getTime());
+
+        //Creare Cheie unica Random pentru produs;
+
+        randomProdusKey = salveazaDataCurenta + salveazaOraCurenta;
+
+        //Stocheaza Imagine Produs in Firebase
+
+        StorageReference caleFisier = imaginiProdusRef.child(ImagineUri.getLastPathSegment() + randomProdusKey);
     }
     }
 
