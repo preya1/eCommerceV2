@@ -1,5 +1,6 @@
 package com.example.ecommerce;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,9 +16,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,7 +39,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
     private EditText introducereNumeProdus,introducereDescriereProdus,introducerePretProdus;
     private static final int GaleriePic = 1;
     private Uri ImagineUri;
-    private String randomProdusKey;
+    private String randomProdusKey,descarcaImagineUrl;
     private StorageReference imaginiProdusRef;
 
     @Override
@@ -142,7 +149,58 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
 
         //Stocheaza Imagine Produs in Firebase
 
-        StorageReference caleFisier = imaginiProdusRef.child(ImagineUri.getLastPathSegment() + randomProdusKey);
+        final StorageReference caleFisier = imaginiProdusRef.child(ImagineUri.getLastPathSegment() + randomProdusKey);
+
+        final UploadTask uploadTask = caleFisier.putFile(ImagineUri);
+
+        //In caz de apare o eroare la incarcare Imagine
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e)
+            {
+                String mesaj = e.toString();
+                Toast.makeText(AdminAdaugaProdusActivity.this,"Eroare : " + mesaj,Toast.LENGTH_LONG).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+            {
+                Toast.makeText(AdminAdaugaProdusActivity.this,"Imagine actualizata cu succes",Toast.LENGTH_LONG).show();
+
+                //STOCHARE LINK IMAGINE IN BAZA DE DATE FIREBASE
+
+                Task<Uri>urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception
+                    {
+                        if(!task.isSuccessful())
+                        {
+                            throw task.getException();
+                        }
+
+                           descarcaImagineUrl = caleFisier.getDownloadUrl().toString();
+                           return caleFisier.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task)
+                    {
+                        if(task.isSuccessful())
+                        {
+                            Toast.makeText(AdminAdaugaProdusActivity.this,"Am primit imagine produs",Toast.LENGTH_LONG).show();
+
+                            salvareProdusInfoBD();
+                        }
+                    }
+                });
+            }
+        });
     }
+
+    private void salvareProdusInfoBD()
+    {
+        
     }
+}
 
