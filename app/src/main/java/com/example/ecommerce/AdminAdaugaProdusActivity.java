@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
     private String randomProdusKey,descarcaImagineUrl;
     private StorageReference imaginiProdusRef;
     private DatabaseReference ProdusRef;
+    private String CropImage;
     private ProgressDialog baraIncarcare;
 
     @Override
@@ -91,7 +93,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
     {
         Intent intentGalerie = new Intent();
         intentGalerie.setAction(Intent.ACTION_GET_CONTENT);
-        intentGalerie.setType("imagine/*");
+        intentGalerie.setType("image/*");
         startActivityForResult(intentGalerie,GaleriePic);
     }
 
@@ -100,7 +102,7 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == GaleriePic && resultCode == RESULT_OK && data!=null)
+            if(requestCode==GaleriePic  &&  resultCode==RESULT_OK  &&  data!=null)
         {
                ImagineUri = data.getData();
                imagineProdus.setImageURI(ImagineUri);
