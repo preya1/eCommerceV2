@@ -202,6 +202,8 @@ public class AdminAdaugaProdusActivity extends AppCompatActivity {
                     {
                         if(task.isSuccessful())
                         {
+                            //Preia link-ul pentru stochare
+                            descarcaImagineUrl = task.getResult().toString();
                             Toast.makeText(AdminAdaugaProdusActivity.this,"Am primit imagine produs",Toast.LENGTH_LONG).show();
 
                             salvareProdusInfoBD();
