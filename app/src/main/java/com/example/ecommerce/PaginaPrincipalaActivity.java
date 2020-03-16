@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.ecommerce.Predominant.Predominant;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -14,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -49,6 +53,12 @@ public class PaginaPrincipalaActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView utilizatorTextView = headerView.findViewById(R.id.utilizator_nume);
+        ImageView profilImageView = headerView.findViewById(R.id.utilizator_poza);
+
+        utilizatorTextView.setText(Predominant.utilizatorCurent.getNume());
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

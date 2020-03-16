@@ -6,5 +6,7 @@ import com.example.ecommerce.Model.Utilizatori;
 
 public class Predominant
 {
-    private static Utilizatori utilizatorCurent;
+    public static Utilizatori utilizatorCurent;
+
+
 }

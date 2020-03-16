@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ecommerce.Model.Utilizatori;
+import com.example.ecommerce.Predominant.Predominant;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -179,6 +180,7 @@ public class LogareActivity extends AppCompatActivity {
                                 baraIncarcare.dismiss();
 
                                 Intent intent = new Intent(LogareActivity.this,PaginaPrincipalaActivity.class);
+                                Predominant.utilizatorCurent = dateUtilizator;
                                 startActivity(intent);
                             }
                         }
