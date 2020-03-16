@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cos"
+            android:icon="@drawable/nav_cos"
+            android:title="Cos" />
+        <item
+            android:id="@+id/nav_comenzi"
+            android:icon="@drawable/comenzi"
+            android:title="Comenzi" />
+        <item
+            android:id="@+id/nav_categorii"
+            android:icon="@drawable/categorii"
+            android:title="Categorii" />
+        <item
+            android:id="@+id/nav_setari"
+            android:icon="@drawable/setari"
+            android:title="Setari" />
+        <item
+            android:id="@+id/nav_delogare"
+            android:icon="@drawable/delogare"
+            android:title="Delogare" />
+
+
+    </group>
+</menu>
