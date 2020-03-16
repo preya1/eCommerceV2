@@ -7,19 +7,19 @@
         <item
             android:id="@+id/nav_cos"
             android:icon="@drawable/nav_cos"
-            android:title="Cos" />
+            android:title="@string/menu_cos" />
         <item
             android:id="@+id/nav_comenzi"
             android:icon="@drawable/comenzi"
-            android:title="Comenzi" />
+            android:title="@string/menu_comenzi" />
         <item
             android:id="@+id/nav_categorii"
             android:icon="@drawable/categorii"
-            android:title="Categorii" />
+            android:title="@string/menu_categorii" />
         <item
             android:id="@+id/nav_setari"
             android:icon="@drawable/setari"
-            android:title="Setari" />
+            android:title="@string/menu_setari" />
         <item
             android:id="@+id/nav_delogare"
             android:icon="@drawable/delogare"

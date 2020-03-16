@@ -8,10 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".cos"></activity>
         <activity
             android:name=".PaginaPrincipalaActivity"
             android:label="@string/title_activity_pagina_principala"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AdminCategorieActivity" />
         <activity android:name=".AdminAdaugaProdusActivity" />
         <activity android:name=".InregistrareActivity" />
