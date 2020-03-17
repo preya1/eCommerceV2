@@ -8,7 +8,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".setari"></activity>
+        <activity android:name=".delogare"></activity>
+        <activity android:name=".setari" />
         <activity android:name=".cos" />
         <activity
             android:name=".PaginaPrincipalaActivity"
